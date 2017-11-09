@@ -18,7 +18,7 @@ public class Genre {
 	private String genreName;
 
 	@OneToMany(mappedBy = "genre")
-	private Set<Book> books = new HashSet<Book>();
+	private Set<Book> booksInGenre = new HashSet<Book>();
 
 	protected Genre() {
 
@@ -36,8 +36,8 @@ public class Genre {
 		return genreName;
 	}
 
-	public Set<Book> getBooks() {
-		return books;
+	public Set<Book> getBooksInGenre() {
+		return booksInGenre;
 	}
 
 	@Override

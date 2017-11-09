@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Author</title>
+</head>
+<body>
+	
+	<h2 th:text="${author.firstName + ' ' + author.lastName}"></h2>
+
+	<div th:each="currentBook: ${author.booksByAuthor}">
+		<p th:text="${currentBook.bookTitle}"></p>
+	</div>
+</body>
+</html>

@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Author {
@@ -17,8 +17,8 @@ public class Author {
 	private String firstName;
 	private String lastName;
 
-	@OneToMany(mappedBy = "author")
-	protected Set<Book> books = new HashSet<Book>();
+	@ManyToMany(mappedBy = "authors")
+	protected Set<Book> booksByAuthor = new HashSet<Book>();
 
 	// JPA required no args constructor
 	protected Author() {
@@ -42,8 +42,8 @@ public class Author {
 		return lastName;
 	}
 
-	public Set<Book> getBooks() {
-		return books;
+	public Set<Book> getBooksByAuthor() {
+		return booksByAuthor;
 	}
 
 	@Override
