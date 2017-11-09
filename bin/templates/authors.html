@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>"src/main/resources/templates/books.html"
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<title>The Authors</title>
+</head>
+
+<body>
+	<h3><a href="/authors">Authors</a></h3>
+	<h3><a href="/genres">Genres</a></h3>
+	<h3><a href="/books">Books</a></h3>
+
+	<div>
+
+	<header>
+		<h1>Here are the Authors</h1>
+	</header>
+		<h2> We Can Code It</h2>
+
+	<ul>
+		<li th:each="authors: ${authors}">
+		<a th:href="@{/authors(id=${author.authorId})}" th:text="${author.firstName + ' ' + author.lastName}"></a>
+		</li>
+	 </ul>
+		</div>
+
+</body>
+</html>

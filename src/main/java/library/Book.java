@@ -1,5 +1,7 @@
 package library;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,9 +23,9 @@ public class Book {
 
 	}
 
-	@ManyToMany(mappedBy = "authors")
-	public Set getBooks() {
-		return books;
+	@ManyToMany(mappedBy = "books")
+	public Set getAuthors() {
+		return authors;
 	}
 
 	public Book(String bookTitle, Author author) {
