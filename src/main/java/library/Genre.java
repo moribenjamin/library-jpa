@@ -15,10 +15,11 @@ public class Genre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long genreId;
+
 	private String genreName;
 
 	@OneToMany(mappedBy = "genre")
-	private Set<Book> booksInGenre = new HashSet<Book>();
+	private Set<Book> booksi = new HashSet<Book>();
 
 	protected Genre() {
 
@@ -36,8 +37,8 @@ public class Genre {
 		return genreName;
 	}
 
-	public Set<Book> getBooksInGenre() {
-		return booksInGenre;
+	public Set<Book> getBooks() {
+		return books;
 	}
 
 	@Override
