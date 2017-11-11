@@ -1,5 +1,7 @@
 package library;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,25 +16,22 @@ public class Book {
 	@Id
 	@GeneratedValue
 	private Long bookId;
-	private String genre
 	private String bookTitle;
 
 	@ManyToOne
-	private Author author;
+	private Genre genre;
+
+	@ManyToMany
+	private Set<Author> authors;
 
 	protected Book() {
 
 	}
 
-	@ManyToMany(mappedBy = "books")
-	public Set getAuthors() {
-		return authors;
-	}
-
-	public Book(String bookTitle, Author author) {
+	public Book(Genre genre, String bookTitle, Author... authors) {
 		this.genre = genre;
 		this.bookTitle = bookTitle;
-		this.author = author;
+		this.authors = new HashSet<>(Arrays.asList(authors));
 	}
 
 	public Long getBookId() {
@@ -43,12 +42,13 @@ public class Book {
 		return bookTitle;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public Set<Author> getAuthors() {
+		return authors;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Book[bookID=%d, bookTitle='%s', author='%s']", bookId, bookTitle, author);
+		return String.format("Book[bookID=%d, genre='%s', bookTitle='%s', author='%s']", bookId, genre, bookTitle,
+				authors);
 	}
 }
